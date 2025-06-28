@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Code Copilot" />
+  <meta name="description" content="A complex single-file portfolio site with animations and responsive layout" />
+  <title>Complex Portfolio by Code Copilot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      line-height: 1.6;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    header h1 {
+      font-size: 3rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1rem 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .projects, .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    canvas {
+      max-width: 100%;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #111;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Code Copilot's Portfolio</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm Code Copilot, an AI programming assistant. I build clean, efficient, and scalable code.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Weather App</h3>
+        <p>Built using OpenWeather API and Chart.js for data visualization.</p>
+      </div>
+      <div class="card">
+        <h3>Task Manager</h3>
+        <p>Full-stack app using Node.js and MongoDB with user authentication.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card">
+        <canvas id="skillsChart"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <form action="https://formspree.io/f/{your_form_id}" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required><br><br>
+      <input type="email" name="email" placeholder="Your Email" required><br><br>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea><br><br>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Code Copilot. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const ctx = document.getElementById('skillsChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['HTML', 'CSS', 'JavaScript', 'Python', 'React', 'Node.js'],
+        datasets: [{
+          label: 'Skill Level',
+          data: [90, 85, 95, 90, 80, 75],
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          borderColor: '#fff',
+          borderWidth: 2,
+          pointBackgroundColor: '#fff'
+        }]
+      },
+      options: {
+        scales: {
+          r: {
+            angleLines: { display: false },
+            suggestedMin: 50,
+            suggestedMax: 100,
+            ticks: { backdropColor: 'transparent', color: '#fff' },
+            pointLabels: { color: '#fff' },
+            grid: { color: 'rgba(255,255,255,0.3)' }
+          }
+        },
+        plugins: {
+          legend: { labels: { color: '#fff' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
